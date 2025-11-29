@@ -26,6 +26,8 @@ namespace ResourceManager
                     .WithDescription("Update a resource by resource ID with a new value and translate it into other languages");
                 config.AddCommand<EditResourceCommand>("edit")
                     .WithDescription("Edit a resource by resource ID and language code with a new value, other languages remain unchanged");
+                config.AddCommand<DeleteResourceCommand>("delete")
+                    .WithDescription("Delete a resource by resource ID");
                 config.AddCommand<ClearCommand>("clear")
                     .WithAlias("cls")
                     .WithDescription("Clear console");

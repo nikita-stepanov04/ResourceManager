@@ -53,6 +53,11 @@ Other languages remain unchanged.
 edit <resourceId> <langCode> <new value>
 ```
 
+Delete a resource by resource ID.
+```bash
+delete <resourceId>
+```
+
 Clear console
 ```bash
 clear
