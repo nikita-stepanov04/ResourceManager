@@ -17,7 +17,13 @@ namespace ResourceManager.Commands
             if (resourcesDict == null)
                 return -1;
 
-            foreach(var language in languages)
+            if (!resourcesDict.Values.First().Data.ContainsKey(settings.ResourceID))
+            {
+                AnsiConsole.MarkupLine($"[red]Resource {settings.ResourceID} was not found[/]");
+                return -1;
+            }
+
+            foreach (var language in languages)
             {
                 var resources = resourcesDict[language].Data;
                 var resource = resources[settings.ResourceID];

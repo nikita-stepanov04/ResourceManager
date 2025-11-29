@@ -14,15 +14,23 @@ namespace ResourceManager.Helpers
             try
             {
                 var resourcesDict = Directory
-               .GetFiles(path)
-               .ToDictionary(
-                   path => Path.GetFileNameWithoutExtension(path),
-                   path => new ResourceInfo
-                   {
-                       Path = path,
-                       Data = JsonSerializer.Deserialize<Dictionary<string, string>>(File.ReadAllText(path))!
-                   }
-               );
+                    .GetFiles(path)
+                    .ToDictionary(
+                        filePath => Path.GetFileNameWithoutExtension(filePath),
+                        filePath =>
+                        {
+                            var text = File.ReadAllText(filePath);
+
+                            return new ResourceInfo
+                            {
+                                Path = filePath,
+                                Data = string.IsNullOrWhiteSpace(text)
+                                    ? new Dictionary<string, string>()
+                                    : JsonSerializer.Deserialize<Dictionary<string, string>>(text)
+                                        ?? new Dictionary<string, string>()
+                            };
+                        }
+                    );
                 var languages = resourcesDict.Keys.ToList();
                 return (resourcesDict, languages);
             }

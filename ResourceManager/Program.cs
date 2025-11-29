@@ -1,6 +1,7 @@
 ﻿using ResourceManager.Commands;
 using Spectre.Console;
 using Spectre.Console.Cli;
+using System.Text;
 using System.Text.RegularExpressions;
 
 namespace ResourceManager
@@ -9,6 +10,10 @@ namespace ResourceManager
     {
         static void Main(string[] args)
         {
+            Console.Clear();
+            Console.InputEncoding = Encoding.UTF8;
+            Console.OutputEncoding = Encoding.UTF8;
+
             var app = new CommandApp();
 
             app.Configure(config =>
@@ -25,8 +30,7 @@ namespace ResourceManager
                     .WithAlias("cls")
                     .WithDescription("Clear console");
             });
-
-            Console.Clear();
+            
             while (true)
             {                
                 AnsiConsole.Markup("[fuchsia]> [/]");
