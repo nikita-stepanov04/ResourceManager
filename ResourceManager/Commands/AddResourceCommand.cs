@@ -17,6 +17,13 @@ namespace ResourceManager.Commands
             if (resourcesDict == null)
                 return -1;
 
+            var duplicate = resourcesDict[config.MainLanguage].Data.FirstOrDefault(kvp => kvp.Value == settings.Text);
+            if (!string.IsNullOrEmpty(duplicate.Key))
+            {
+                AnsiConsole.MarkupLine($"Resource already exists: [blue]{{{{'{duplicate.Key}' | translate}}}}[/]");
+                return -1;
+            }
+
             var translations = await Translator.TranslateAsync(languages, settings.Text);
             if (translations == null)
                 return -1;
@@ -35,7 +42,7 @@ namespace ResourceManager.Commands
 
             Resources.UpdateResource(resourcesDict);
 
-            AnsiConsole.MarkupLine($"New resource id: [blue]{resourceID}[/]");
+            AnsiConsole.MarkupLine($"New resource: [blue]{{{{'{resourceID}' | translate}}}}[/]");
             return 0;
         }
     }
