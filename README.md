@@ -32,9 +32,14 @@ This file defines the application settings:
 
 ## 🖥️ Commands
 
+Add resource language and automatically translates all existing resources from main language to new one.
+```bash
+add-language <isoLangCode>
+```
+
 Add a new resource in the main language from config and translate it into other languages.
 ```bash
-add <resourceId> <value>
+add <text>
 ```
 
 Display resources by resource ID.
@@ -44,13 +49,13 @@ Display resources by resource ID.
 
 Update a resource by resource ID with a new value and translate it into other languages.
 ```bash
-update <resourceId> <new value>
+update <resourceId> <text>
 ```
 
 Edit a resource by resource ID and language code with a new value.
 Other languages remain unchanged.
 ```bash
-edit <resourceId> <langCode> <new value>
+edit <isoLangCode> <recourceId> <text>
 ```
 
 Delete a resource by resource ID.
