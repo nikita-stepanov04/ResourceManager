@@ -41,13 +41,18 @@ namespace ResourceManager.Helpers
             }
         }
 
+        public static string GetNewResourceName(int index)
+        {
+            return RESOURCE_ID_PREFIX + index.ToString("D3");
+        }
+
         public static string GetNewResourceName(Dictionary<string, string> data)
         {
             return RESOURCE_ID_PREFIX + (int.Parse(
                 data.Keys
-                .Order()
-                .LastOrDefault()?
-                .Replace(RESOURCE_ID_PREFIX, string.Empty) ?? "0"
+                    .Order()
+                    .LastOrDefault()?
+                    .Replace(RESOURCE_ID_PREFIX, string.Empty) ?? "0"
             ) + 1).ToString("D3");
         }
 

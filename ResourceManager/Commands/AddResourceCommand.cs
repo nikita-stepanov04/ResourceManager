@@ -1,10 +1,13 @@
-﻿using ResourceManager.Helpers;
+﻿using ResourceManager.Attributes;
+using ResourceManager.Helpers;
 using ResourceManager.Settings;
 using Spectre.Console;
 using Spectre.Console.Cli;
 
 namespace ResourceManager.Commands
 {
+    [CommandName("add")]
+    [CommandDescription("Add a new resource in the main language from config and translate it into other languages")]
     public class AddResourceCommand : AsyncCommand<ResourceSettings>
     {
         public override async Task<int> ExecuteAsync(CommandContext context, ResourceSettings settings, CancellationToken token)
@@ -24,7 +27,7 @@ namespace ResourceManager.Commands
                 return -1;
             }
 
-            var translations = await Translator.TranslateAsync(languages, settings.Text);
+            var translations = await Translator.TranslateAsync(languages, [settings.Text]);
             if (translations == null)
                 return -1;
 
@@ -36,7 +39,7 @@ namespace ResourceManager.Commands
                 var resource = kvp.Value.Data;
 
                 var translatedText = translations[lang];
-                resource.Add(resourceID, translatedText);
+                resource.Add(resourceID, translatedText.First());
                 AnsiConsole.MarkupLine($"[green]{lang}[/] - {translatedText}");
             }
 

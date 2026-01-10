@@ -6,8 +6,9 @@ namespace ResourceManager.Helpers
 {
     public static class Configuration
     {
-        const string CONFIG_FOLDER_NAME = "ResourceManagerConfig";
-        const string CONFIG_FILE_NAME = "config.json";
+        public static string CONFIG_FOLDER_NAME = "ResourceManagerConfig";
+        public static string CONFIG_FILE_NAME = "config.json";
+
         public static Config? GetConfig()
         {
             var documentsFolder = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);

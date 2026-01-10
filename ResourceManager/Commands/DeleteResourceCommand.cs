@@ -1,11 +1,13 @@
-﻿using ResourceManager.Helpers;
+﻿using ResourceManager.Attributes;
+using ResourceManager.Helpers;
 using ResourceManager.Settings;
 using Spectre.Console;
 using Spectre.Console.Cli;
-using static Google.Rpc.Context.AttributeContext.Types;
 
 namespace ResourceManager.Commands
 {
+    [CommandName("delete")]
+    [CommandDescription("Delete a resource by resource ID")]
     public class DeleteResourceCommand : Command<GetResourceSetting>
     {
         public override int Execute(CommandContext context, GetResourceSetting settings, CancellationToken cancellationToken)

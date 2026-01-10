@@ -1,10 +1,13 @@
-﻿using ResourceManager.Helpers;
+﻿using ResourceManager.Attributes;
+using ResourceManager.Helpers;
 using ResourceManager.Settings;
 using Spectre.Console;
 using Spectre.Console.Cli;
 
 namespace ResourceManager.Commands
 {
+    [CommandName("get")]
+    [CommandDescription("Display resources by resource ID")]
     public class GetResourceCommand : Command<GetResourceSetting>
     {
         public override int Execute(CommandContext context, GetResourceSetting settings, CancellationToken cancellationToken)
