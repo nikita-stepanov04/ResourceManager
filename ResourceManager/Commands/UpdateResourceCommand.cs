@@ -35,8 +35,8 @@ namespace ResourceManager.Commands
                 var lang = kvp.Key;
                 var resource = kvp.Value.Data;
 
-                var translatedText = translations[lang];
-                resource[settings.ResourceID] = translatedText.First();
+                var translatedText = translations[lang].First();
+                resource[settings.ResourceID] = translatedText;
                 AnsiConsole.MarkupLine($"[green]{lang}[/] - {translatedText}");
             }
             Resources.UpdateResource(resourcesDict);
