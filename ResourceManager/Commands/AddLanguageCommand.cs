@@ -8,11 +8,13 @@ using System.Text.Json;
 
 namespace ResourceManager.Commands
 {
-    [CommandName("add-language")]
-    [CommandDescription("Add resource language and automatically translates all existing resources from main language to new one")]
+    [CommandName("add-language", ordering: 3)]
+    [CommandDescription("Add resource language and automatically translates " +
+        "all existing resources from main language to new one")]
     public class AddLanguageCommand : AsyncCommand<NewLanguageSetting>
     {
-        public override async Task<int> ExecuteAsync(CommandContext context, NewLanguageSetting settings, CancellationToken cancellationToken)
+        public override async Task<int> ExecuteAsync(
+            CommandContext context, NewLanguageSetting settings, CancellationToken cancellationToken)
         {
             var config = Configuration.GetConfig();
             if (config == null)

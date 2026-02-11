@@ -6,11 +6,13 @@ using Spectre.Console.Cli;
 
 namespace ResourceManager.Commands
 {
-    [CommandName("edit")]
-    [CommandDescription("Edit a resource by resource ID and language code with a new value, other languages remain unchanged")]
+    [CommandName("edit", ordering: 4)]
+    [CommandDescription("Edit a resource by resource ID and language " +
+        "code with a new value, other languages remain unchanged")]
     public class EditResourceCommand : Command<EditResourceSetting>
     {
-        public override int Execute(CommandContext context, EditResourceSetting settings, CancellationToken cancellationToken)
+        public override int Execute(
+            CommandContext context, EditResourceSetting settings, CancellationToken cancellationToken)
         {
             var config = Configuration.GetConfig();
             if (config == null)

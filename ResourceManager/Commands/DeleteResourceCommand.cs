@@ -6,11 +6,12 @@ using Spectre.Console.Cli;
 
 namespace ResourceManager.Commands
 {
-    [CommandName("delete")]
+    [CommandName("delete", ordering: 5)]
     [CommandDescription("Delete a resource by resource ID")]
     public class DeleteResourceCommand : Command<GetResourceSetting>
     {
-        public override int Execute(CommandContext context, GetResourceSetting settings, CancellationToken cancellationToken)
+        public override int Execute(
+            CommandContext context, GetResourceSetting settings, CancellationToken cancellationToken)
         {
             var config = Configuration.GetConfig();
             if (config == null)

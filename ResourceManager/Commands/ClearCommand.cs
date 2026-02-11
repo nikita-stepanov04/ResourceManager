@@ -4,7 +4,7 @@ using Spectre.Console.Cli;
 namespace ResourceManager.Commands
 {
     [CommandAlias("cls")]
-    [CommandName("clear")]
+    [CommandName("clear", ordering: 7)]
     [CommandDescription("Clear console")]
     public class ClearCommand : Command
     {

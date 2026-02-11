@@ -6,11 +6,12 @@ using Spectre.Console.Cli;
 
 namespace ResourceManager.Commands
 {
-    [CommandName("get")]
+    [CommandName("get", ordering: 1)]
     [CommandDescription("Display resources by resource ID")]
     public class GetResourceCommand : Command<GetResourceSetting>
     {
-        public override int Execute(CommandContext context, GetResourceSetting settings, CancellationToken cancellationToken)
+        public override int Execute(
+            CommandContext context, GetResourceSetting settings, CancellationToken cancellationToken)
         {
             var config = Configuration.GetConfig();
             if (config == null)

@@ -6,11 +6,12 @@ using Spectre.Console.Cli;
 
 namespace ResourceManager.Commands
 {
-    [CommandName("add")]
+    [CommandName("add", ordering: 2)]
     [CommandDescription("Add a new resource in the main language from config and translate it into other languages")]
     public class AddResourceCommand : AsyncCommand<ResourceSettings>
     {
-        public override async Task<int> ExecuteAsync(CommandContext context, ResourceSettings settings, CancellationToken token)
+        public override async Task<int> ExecuteAsync(
+            CommandContext context, ResourceSettings settings, CancellationToken token)
         {
             var config = Configuration.GetConfig();
             if (config == null)

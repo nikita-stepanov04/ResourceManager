@@ -20,16 +20,13 @@ namespace ResourceManager
             while (true)
             {
                 AnsiConsole.Markup("[fuchsia]> [/]");
-                var line = Console.ReadLine();
+                var line = Console.ReadLine()!.Trim("--").ToString();
 
                 if (string.IsNullOrWhiteSpace(line))
                     continue;
 
                 if (line.Equals("exit", StringComparison.OrdinalIgnoreCase))
                     break;
-
-                if (line.Equals("help", StringComparison.OrdinalIgnoreCase))
-                    line = "--help";
 
                 var matches = Regex.Matches(line, @"[\""].+?[\""]|[^ ]+");
 
