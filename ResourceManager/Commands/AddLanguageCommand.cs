@@ -26,13 +26,13 @@ namespace ResourceManager.Commands
 
             if (languages.Contains(settings.LandCode))
             {
-                AnsiConsole.MarkupLine($"[red]Language {settings.LandCode} is already added[/]");
+                AnsiConsole.MarkupLine(Colors.Red($"Language {settings.LandCode} is already added"));
                 return -1;
             }
 
             if (!await Translator.CheckLangCodeValidity(settings.LandCode))
             {
-                AnsiConsole.MarkupLine($"[red]Language {settings.LandCode} is not a ISO language[/]");
+                AnsiConsole.MarkupLine(Colors.Red($"Language {settings.LandCode} is not a ISO language"));
                 return -1;
             }
 
@@ -57,7 +57,7 @@ namespace ResourceManager.Commands
 
             foreach (var kvp in json)
             {
-                AnsiConsole.MarkupLine($"[green]{kvp.Key}[/][white] - {kvp.Value}[/]");
+                AnsiConsole.MarkupLine(Colors.Green($"{kvp.Key}") + "-" + kvp.Value);
             }
 
             return 0;

@@ -1,4 +1,5 @@
 ﻿using ResourceManager.Attributes;
+using ResourceManager.Helpers;
 using Spectre.Console;
 using Spectre.Console.Cli;
 
@@ -14,9 +15,9 @@ namespace ResourceManager.Commands
             var table = new Table()
                 .RoundedBorder()
                 .ShowRowSeparators()
-                .AddColumn("[yellow]Command[/]")
-                .AddColumn("[yellow]Parameters[/]")
-                .AddColumn("[yellow]Description[/]");
+                .AddColumn(Colors.Yellow("Command"))
+                .AddColumn(Colors.Yellow("Parameters"))
+                .AddColumn(Colors.Yellow("Description"));
 
             foreach (var commandInfo in commandsInfo)
             {
@@ -28,7 +29,7 @@ namespace ResourceManager.Commands
                 {
                     paramsGrid.AddRow(
                         param.Name,
-                        param.IsRequired ? "[red]req[/]" : "[green]nonreq[/]"
+                        param.IsRequired ? Colors.Red("req") : Colors.Red("nonreq")
                     );
                 }
 

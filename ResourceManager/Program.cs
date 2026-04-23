@@ -1,4 +1,5 @@
-﻿using Spectre.Console;
+﻿using ResourceManager.Helpers;
+using Spectre.Console;
 using Spectre.Console.Cli;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -19,7 +20,7 @@ namespace ResourceManager
 
             while (true)
             {
-                AnsiConsole.Markup("[fuchsia]> [/]");
+                AnsiConsole.Markup(Colors.Fuchsia("> "));
                 var line = Console.ReadLine()!.Trim("--").ToString();
 
                 if (string.IsNullOrWhiteSpace(line))

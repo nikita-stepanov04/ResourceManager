@@ -24,20 +24,20 @@ namespace ResourceManager.Commands
 
             if (!resourcesDict.Values.First().Data.ContainsKey(settings.ResourceID))
             {
-                AnsiConsole.MarkupLine($"[red]Resource {settings.ResourceID} was not found[/]");
+                AnsiConsole.MarkupLine(Colors.Red($"Resource {settings.ResourceID} was not found"));
                 return -1;
             }
 
             if (!languages.Contains(settings.LangCode))
             {
-                AnsiConsole.MarkupLine($"[red]Language {settings.LangCode} was not found[/]");
+                AnsiConsole.MarkupLine(Colors.Red($"Language {settings.LangCode} was not found"));
                 return -1;
             }
 
             resourcesDict[settings.LangCode].Data[settings.ResourceID] = settings.Text;
             Resources.UpdateResource(resourcesDict);
 
-            AnsiConsole.MarkupLine($"[green]{settings.LangCode}[/][white] - {settings.Text}[/]");
+            AnsiConsole.MarkupLine(Colors.Green(settings.LangCode) + $" - {settings.Text}");
 
             return 0;
         }

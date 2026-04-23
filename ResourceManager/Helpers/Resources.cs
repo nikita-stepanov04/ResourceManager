@@ -9,6 +9,8 @@ namespace ResourceManager.Helpers
     {
         const string RESOURCE_ID_PREFIX = "str";
 
+        public static string AngularTemplate(string resourceID) => $"{{{{'{resourceID}' | translate}}}}";
+
         public static (Dictionary<string, ResourceInfo>?, List<string>) GetResources(string path)
         {
             try
@@ -36,7 +38,7 @@ namespace ResourceManager.Helpers
             }
             catch
             {
-                AnsiConsole.MarkupLine($"[red]Failed to load resources[/]");
+                AnsiConsole.MarkupLine(Colors.Red("Failed to load resources"));
                 return (null, []);
             }
         }

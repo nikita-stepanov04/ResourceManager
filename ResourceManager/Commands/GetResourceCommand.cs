@@ -23,16 +23,16 @@ namespace ResourceManager.Commands
 
             if (!resourcesDict.Values.First().Data.ContainsKey(settings.ResourceID))
             {
-                AnsiConsole.MarkupLine($"[red]Resource {settings.ResourceID} was not found[/]");
+                AnsiConsole.MarkupLine(Colors.Red($"Resource {settings.ResourceID} was not found"));
                 return -1;
             }
 
-            foreach (var language in languages)
+            foreach (var language in languages) 
             {
                 var resources = resourcesDict[language].Data;
                 var resource = resources[settings.ResourceID];
 
-                AnsiConsole.MarkupLine($"[green]{language}[/][white] - {resource}[/]");
+                AnsiConsole.MarkupLine(Colors.Green(language) + $" - {resource}");
             }
 
             return 0;

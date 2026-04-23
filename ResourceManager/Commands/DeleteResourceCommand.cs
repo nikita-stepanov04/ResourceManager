@@ -23,7 +23,7 @@ namespace ResourceManager.Commands
 
             if (!resourcesDict.Values.First().Data.ContainsKey(settings.ResourceID))
             {
-                AnsiConsole.MarkupLine($"[red]Resource {settings.ResourceID} was not found[/]");
+                AnsiConsole.MarkupLine(Colors.Red($"Resource {settings.ResourceID} was not found"));
                 return -1;
             }
 
@@ -35,7 +35,7 @@ namespace ResourceManager.Commands
             }
             Resources.UpdateResource(resourcesDict);
 
-            AnsiConsole.MarkupLine($"Resource [red]{settings.ResourceID}[/] was deleted");
+            AnsiConsole.MarkupLine("Resource" + Colors.Red(settings.ResourceID) + " was deleted");
 
             return 0;
         }

@@ -18,7 +18,7 @@ namespace ResourceManager.Helpers
 
             if (!Path.Exists(configFile))
             {
-                AnsiConsole.MarkupLine($"[red]File {configFile} was not found[/]");
+                AnsiConsole.MarkupLine(Colors.Red($"File {configFile} was not found"));
                 return null;
             }
 

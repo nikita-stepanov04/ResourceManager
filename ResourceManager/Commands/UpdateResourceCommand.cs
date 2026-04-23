@@ -24,7 +24,7 @@ namespace ResourceManager.Commands
 
             if (!resourcesDict.Values.First().Data.ContainsKey(settings.ResourceID))
             {
-                AnsiConsole.MarkupLine($"[red]Resource {settings.ResourceID} was not found[/]");
+                AnsiConsole.MarkupLine(Colors.Red($"Resource {settings.ResourceID} was not found"));
                 return -1;
             }
 
@@ -39,7 +39,7 @@ namespace ResourceManager.Commands
 
                 var translatedText = translations[lang].First();
                 resource[settings.ResourceID] = translatedText;
-                AnsiConsole.MarkupLine($"[green]{lang}[/] - {translatedText}");
+                AnsiConsole.MarkupLine(Colors.Green(lang) + $" - {translatedText}");
             }
             Resources.UpdateResource(resourcesDict);
 

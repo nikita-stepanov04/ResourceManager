@@ -24,7 +24,7 @@ namespace ResourceManager.Commands
             var duplicate = resourcesDict[config.MainLanguage].Data.FirstOrDefault(kvp => kvp.Value == settings.Text);
             if (!string.IsNullOrEmpty(duplicate.Key))
             {
-                AnsiConsole.MarkupLine($"Resource already exists: [blue]{{{{'{duplicate.Key}' | translate}}}}[/]");
+                AnsiConsole.MarkupLine("Resource already exists: " + Colors.Blue(Resources.AngularTemplate(duplicate.Key)));
                 return -1;
             }
 
@@ -41,12 +41,12 @@ namespace ResourceManager.Commands
 
                 var translatedText = translations[lang].First();
                 resource.Add(resourceID, translatedText);
-                AnsiConsole.MarkupLine($"[green]{lang}[/] - {translatedText}");
+                AnsiConsole.MarkupLine(Colors.Green(lang) + $" - {translatedText}");
             }
 
             Resources.UpdateResource(resourcesDict);
 
-            AnsiConsole.MarkupLine($"New resource: [blue]{{{{'{resourceID}' | translate}}}}[/]");
+            AnsiConsole.MarkupLine("New resource: " + Colors.Blue(resourceID));
             return 0;
         }
     }
