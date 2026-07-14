@@ -20,7 +20,13 @@ namespace ResourceManager
                     CommandAliasAttrs: t.GetCustomAttributes<CommandAliasAttribute>(),
                     CommandDescriptionAttr: t.GetCustomAttribute<CommandDescriptionAttribute>()
                 ))
-                .Where(x => x.CommandNameAttr != null);
+                .Where(x => x.CommandNameAttr != null)
+                .ToList();
+
+            var a = typesInfo
+                .Where(ti => ti.CommandNameAttr!.Ordering > 0)
+                .OrderBy(ti => ti.CommandNameAttr!.Ordering)
+                .ToList();
 
             CommandsInfo = typesInfo
                 .Where(ti => ti.CommandNameAttr!.Ordering > 0)
@@ -31,8 +37,8 @@ namespace ResourceManager
                     Description = t.CommandDescriptionAttr?.CommandDescription,
                     Aliases = t.CommandAliasAttrs.Select(a => a.CommandAlias),
                     Parameters = (
-                        t.Type.GetMethod("Execute") ??
-                        t.Type.GetMethod("ExecuteAsync")
+                        t.Type.GetMethod("Execute", BindingFlags.Instance | BindingFlags.NonPublic) ??
+                        t.Type.GetMethod("ExecuteAsync", BindingFlags.Instance | BindingFlags.NonPublic)
                     )!
                     .GetParameters()
                     .Where(p => typeof(CommandSettings).IsAssignableFrom(p.ParameterType))
@@ -46,7 +52,7 @@ namespace ResourceManager
                             IsRequired = atr!.IsRequired
                         })
                     ).FirstOrDefault() ?? []
-                });
+                }).ToList();
 
             var addCommandMethod = config.GetType().GetMethod("AddCommand");
             foreach (var typeInfo in typesInfo)

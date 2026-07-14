@@ -22,7 +22,7 @@ namespace ResourceManager.Commands
             foreach (var commandInfo in commandsInfo)
             {
                 var paramsGrid = new Grid()
-                    .AddColumn(new GridColumn().LeftAligned().Width(12))
+                    .AddColumn(new GridColumn().LeftAligned().Width(16))
                     .AddColumn(new GridColumn().RightAligned());
 
                 foreach (var param in commandInfo.Parameters)

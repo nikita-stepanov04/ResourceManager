@@ -7,5 +7,8 @@ namespace ResourceManager.Settings
     {
         [CommandArgument(0, "<AbsoluteDestPath>")]
         public string AbsoluteDestPath { get; set; } = null!;
+
+        [CommandArgument(1, "<NeutralCulture>")]
+        public string NeutralCulture { get; set; } = null!;
     }
 }
