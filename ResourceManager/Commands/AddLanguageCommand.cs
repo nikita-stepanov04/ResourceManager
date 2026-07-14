@@ -13,7 +13,7 @@ namespace ResourceManager.Commands
         "all existing resources from main language to new one")]
     public class AddLanguageCommand : AsyncCommand<NewLanguageSetting>
     {
-        public override async Task<int> ExecuteAsync(
+        protected override async Task<int> ExecuteAsync(
             CommandContext context, NewLanguageSetting settings, CancellationToken cancellationToken)
         {
             var config = Configuration.GetConfig();

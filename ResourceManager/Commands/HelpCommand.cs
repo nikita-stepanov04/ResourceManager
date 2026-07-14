@@ -8,7 +8,7 @@ namespace ResourceManager.Commands
     [CommandName("help", ordering: -1)]
     public class HelpCommand : Command
     {
-        public override int Execute(CommandContext context, CancellationToken cancellationToken)
+        protected override int Execute(CommandContext context, CancellationToken cancellationToken)
         {
             var commandsInfo = ConfigureApp.CommandsInfo;
 

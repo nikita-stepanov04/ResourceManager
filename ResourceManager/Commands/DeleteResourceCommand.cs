@@ -10,7 +10,7 @@ namespace ResourceManager.Commands
     [CommandDescription("Delete a resource by resource ID")]
     public class DeleteResourceCommand : Command<GetResourceSetting>
     {
-        public override int Execute(
+        protected override int Execute(
             CommandContext context, GetResourceSetting settings, CancellationToken cancellationToken)
         {
             var config = Configuration.GetConfig();

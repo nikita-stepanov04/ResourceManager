@@ -11,7 +11,7 @@ namespace ResourceManager.Commands
         "new value and translate it into other languages")]
     public class UpdateResourceCommand : AsyncCommand<UpdateResourceSetting>
     {
-        public override async Task<int> ExecuteAsync(
+        protected override async Task<int> ExecuteAsync(
             CommandContext context, UpdateResourceSetting settings, CancellationToken cancellationToken)
         {
             var config = Configuration.GetConfig();

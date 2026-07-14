@@ -10,7 +10,7 @@ namespace ResourceManager.Commands
     [CommandDescription("Add a new resource in the main language from config and translate it into other languages")]
     public class AddResourceCommand : AsyncCommand<ResourceSettings>
     {
-        public override async Task<int> ExecuteAsync(
+        protected override async Task<int> ExecuteAsync(
             CommandContext context, ResourceSettings settings, CancellationToken token)
         {
             var config = Configuration.GetConfig();

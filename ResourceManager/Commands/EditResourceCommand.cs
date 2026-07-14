@@ -11,7 +11,7 @@ namespace ResourceManager.Commands
         "code with a new value, other languages remain unchanged")]
     public class EditResourceCommand : Command<EditResourceSetting>
     {
-        public override int Execute(
+        protected override int Execute(
             CommandContext context, EditResourceSetting settings, CancellationToken cancellationToken)
         {
             var config = Configuration.GetConfig();

@@ -8,7 +8,7 @@ namespace ResourceManager.Commands
     [CommandDescription("Clear console")]
     public class ClearCommand : Command
     {
-        public override int Execute(CommandContext context, CancellationToken cancellationToken)
+        protected override int Execute(CommandContext context, CancellationToken cancellationToken)
         {
             Console.Clear();
             return 0;
